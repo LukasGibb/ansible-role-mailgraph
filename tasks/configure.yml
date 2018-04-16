@@ -19,5 +19,5 @@
   debconf:
     name: mailgraph
     question: mailgraph/mail_log
-    value: {{ mailgraph_mail_log }}
+    value: '{{ mailgraph_mail_log }}'
     vtype: select
