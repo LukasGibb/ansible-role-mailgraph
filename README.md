@@ -3,31 +3,33 @@ Role Name
 
 An Ansible role that installs mailgraph on Ubuntu servers.
 
-[Mailgraph] (https://mailgraph.schweikert.ch/) is a very simple mail statistics RRDtool frontend for Postfix and Sendmail that produces daily, weekly, monthly and yearly graphs of received/sent and bounced/rejected mail. Mailgraph was developed by [David Schweikert] (http://david.schweikert.ch/).
+[Mailgraph](https://mailgraph.schweikert.ch/) is a very simple mail statistics RRDtool frontend for Postfix and Sendmail that produces daily, weekly, monthly and yearly graphs of received/sent and bounced/rejected mail. Mailgraph was developed by [David Schweikert](http://david.schweikert.ch/).
 
 Requirements
 ------------
 
 This role also installs rrdtool which is needed by Mailgraph to draw the graphs.
 
-A web server (eg. Apache) will be required to view mailgraph which will run at the following address:
+A web server (eg. Apache) will be required to view mailgraph which will run at the following URL (depending on your apache vhost configuration):
 
-http://[hostname]/cgi-bin/mailgraph.cgi
+http://[hostname]:[port]/cgi-bin/mailgraph.cgi
+
+eg: http://mail01:8080/cgi-bin/mailgraph.cgi
 
 Role Variables
 --------------
 
-# Postfix delivers emails to integrated content filters like amavisd which, after successful spam/virus scanning, deliver the email back to Postfix. Setting this variable to true will avoid Mailgraph counting your emails twice 
+- Postfix delivers emails to integrated content filters like amavisd which, after successful spam/virus scanning, deliver the email back to Postfix. Setting this variable to true will avoid Mailgraph counting your emails twice 
 `mailgraph_ignore_localhost` [default: `true`]
 
-# Start the mailgraph service on boot
+- Start the mailgraph service on boot
 `mailgraph_start_on_boot` [default: `true`]
 
-# Mail log location for mailgraph to read
+- Mail log location for mailgraph to read
 `mailgraph_mail_log` [default: `/var/log/mail.log`]
 
-# The location that the mailgraph CGI will be copied to after being configured
-mailgraph_cgi_location: /var/www/cgi-bin
+- The location that the mailgraph CGI will be copied to after being configured
+`mailgraph_cgi_location` [default: /var/www/cgi-bin]
 
 Dependencies
 ------------
@@ -37,7 +39,8 @@ This role requires a web server to serve the mailgraph.cgi. Jeff Geerling's `gee
 Example Playbook
 ----------------
 
-# Simple implementation with no domain - URL: `http://[hostname]:8080/cgi-bin/mailgraph.cgi`
+- Simple implementation with no domain:
+URL: `http://[hostname]:8080/cgi-bin/mailgraph.cgi`
 
     - hosts: mailservers
       
@@ -52,7 +55,8 @@ Example Playbook
         - geerlingguy.apache
         - LukasGibb.mailgraph
 
-# More complex implementation with a domain - URL: `http://example.com:8080/cgi-bin/mailgraph.cgi`
+- More complex implementation with a domain:
+URL: `http://example.com:8080/cgi-bin/mailgraph.cgi`
 
     - hosts: mailservers
       
