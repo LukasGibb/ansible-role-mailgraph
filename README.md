@@ -19,16 +19,16 @@ eg: http://mail01:8080/cgi-bin/mailgraph.cgi
 Role Variables
 --------------
 
-- Postfix delivers emails to integrated content filters like amavisd which, after successful spam/virus scanning, deliver the email back to Postfix. Setting this variable to true will avoid Mailgraph counting your emails twice 
+Postfix delivers emails to integrated content filters like amavisd which, after successful spam/virus scanning, deliver the email back to Postfix. Setting this variable to true will avoid Mailgraph counting your emails twice 
 `mailgraph_ignore_localhost` [default: `true`]
 
-- Start the mailgraph service on boot
+Start the mailgraph service on boot
 `mailgraph_start_on_boot` [default: `true`]
 
-- Mail log location for mailgraph to read
+Mail log location for mailgraph to read
 `mailgraph_mail_log` [default: `/var/log/mail.log`]
 
-- The location that the mailgraph CGI will be copied to after being configured
+The location that the mailgraph CGI will be copied to after being configured
 `mailgraph_cgi_location` [default: /var/www/cgi-bin]
 
 Dependencies
@@ -39,7 +39,7 @@ This role requires a web server to serve the mailgraph.cgi. Jeff Geerling's `gee
 Example Playbook
 ----------------
 
-- Simple implementation with no domain:
+Simple implementation with no domain:
 URL: `http://[hostname]:8080/cgi-bin/mailgraph.cgi`
 
     - hosts: mailservers
@@ -55,7 +55,7 @@ URL: `http://[hostname]:8080/cgi-bin/mailgraph.cgi`
         - geerlingguy.apache
         - LukasGibb.mailgraph
 
-- More complex implementation with a domain:
+More complex implementation with a domain:
 URL: `http://example.com:8080/cgi-bin/mailgraph.cgi`
 
     - hosts: mailservers
