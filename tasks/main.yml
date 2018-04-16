@@ -1,0 +1,9 @@
+---
+# tasks file for ansible-role-mailgraph
+
+- include: install.yml
+
+- include: configure.yml
+
+- name: Ensure Mailgraph is started
+  service: name=mailgraph state=started enabled=yes

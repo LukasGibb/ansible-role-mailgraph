@@ -1,0 +1,8 @@
+---
+
+- name: Install Mailgraph requirements
+  apt: name={{item}} state=present
+  with_items:
+  - rrdtool
+  - mailgraph
+  tags: mailgraph

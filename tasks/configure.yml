@@ -1,0 +1,23 @@
+---
+
+- name: Set mailgraph to ignore localhost
+  debconf:
+    name: mailgraph
+    question: mailgraph/ignore_localhost
+    value: '{{ mailgraph_ignore_localhost }}'
+    vtype: select
+
+- name: Set mailgraph to start on boot
+  debconf:
+    name: mailgraph
+    question: mailgraph/start_on_boot
+    value: '{{ mailgraph_start_on_boot }}'
+    vtype: select
+  notify: update mailgraph cgi file
+
+- name: Set mailgraph log location
+  debconf:
+    name: mailgraph
+    question: mailgraph/mail_log
+    value: {{ mailgraph_mail_log }}
+    vtype: select
