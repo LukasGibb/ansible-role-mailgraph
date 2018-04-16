@@ -3,4 +3,4 @@
 - name: udpate mailgraph cgi file
   copy:
     src: /usr/lib/cgi-bin/mailgraph.cgi
-    dest: {{ mailgraph_cgi_location }}
+    dest: '{{ mailgraph_cgi_location }}'
