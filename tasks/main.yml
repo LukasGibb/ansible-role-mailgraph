@@ -1,9 +1,9 @@
 ---
 # tasks file for ansible-role-mailgraph
 
-- import_playbook: install.yml
+- import_tasks: install.yml
 
-- import_playbook: configure.yml
+- import_tasks: configure.yml
 
 # Removed this task as mailgraph does not have a 'status' check on it's init script.
 #- name: Ensure Mailgraph is started
