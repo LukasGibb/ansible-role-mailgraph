@@ -6,7 +6,7 @@
     mailgraph_ignore_localhost: true
     mailgraph_start_on_boot: true
     mailgraph_mail_log: /var/log/mail.log
-    
+
     apache_listen_port: 8080
     apache_mods_enabled: cgi.load
 
