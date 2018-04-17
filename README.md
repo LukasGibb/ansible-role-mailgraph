@@ -28,13 +28,10 @@ Start the mailgraph service on boot
 Mail log location for mailgraph to read
 `mailgraph_mail_log` [default: `/var/log/mail.log`]
 
-The location that the mailgraph CGI will be copied to after being configured
-`mailgraph_cgi_location` [default: /var/www/cgi-bin]
-
 Dependencies
 ------------
 
-This role requires a web server to serve the mailgraph.cgi. Jeff Geerling's `geerlingguy.apache` role is being used here. Please remember that the `mailgraph_cgi_location` may need to be changed depending on your vhost configuration in apache.
+This role requires a web server to serve the mailgraph.cgi. Jeff Geerling's `geerlingguy.apache` role is being used here. Make sure you enable the CGI module as show below (ie. `apache_mods_enabled: cgi.load`)
 
 Example Playbook
 ----------------
@@ -48,8 +45,9 @@ URL: `http://[hostname]:8080/cgi-bin/mailgraph.cgi`
         mailgraph_ignore_localhost: true
         mailgraph_start_on_boot: true
         mailgraph_mail_log: /var/log/mail.log
-        mailgraph_cgi_location: /var/www/cgi-bin
+
         apache_listen_port: 8080
+        apache_mods_enabled: cgi.load
 
       roles:
         - geerlingguy.apache
@@ -64,8 +62,9 @@ URL: `http://example.com:8080/cgi-bin/mailgraph.cgi`
         mailgraph_ignore_localhost: true
         mailgraph_start_on_boot: true
         mailgraph_mail_log: /var/log/mail.log
-        mailgraph_cgi_location: /var/www/example_com/cgi-bin
+
         apache_listen_port: 8080
+        apache_mods_enabled: cgi.load
         apache_vhosts:
           - servername: "example.com"
             documentroot: "/var/www/example_com"

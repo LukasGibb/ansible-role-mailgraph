@@ -13,7 +13,6 @@
     question: mailgraph/start_on_boot
     value: '{{ mailgraph_start_on_boot }}'
     vtype: select
-  notify: update mailgraph cgi file
 
 - name: Set mailgraph log location
   debconf:

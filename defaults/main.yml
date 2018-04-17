@@ -9,6 +9,3 @@ mailgraph_start_on_boot: true
 
 # Mail log location for mailgraph to read
 mailgraph_mail_log: /var/log/mail.log
-
-# The location that the mailgraph CGI will be copied to after being configured
-mailgraph_cgi_location: /var/www/cgi-bin
